@@ -1,91 +1,52 @@
-DevOps Practice Project – Dist Directory
+# 🧠 Brain-Tasks-App: DevOps Practice Project
 
-This repository contains the production-ready build files (dist folder) for DevOps practice and deployment exercises.
+This repository contains the production-ready build files for DevOps practice and deployment exercises. It is intentionally structured to help learners focus on **CI/CD pipelines, containerization, and Kubernetes infrastructure** rather than application development.
 
-It is intentionally structured to help learners focus on CI/CD pipelines, hosting, containerization, and infrastructure setup rather than application development.
+## 📁 What This Repository Contains
+* **dist/** – Compiled and production-ready static files (HTML, CSS, JS).
+* **Dockerfile** – Configuration to containerize the `dist` folder using Nginx.
+* **buildspec.yml** – Automation instructions for AWS CodeBuild.
+* **k8s/** – Manifest files (Deployment & Service) for Kubernetes orchestration.
 
-📁 What This Repository Contains
+These files are optimized for deployment to:
+* **Containerized environments** (Docker + Nginx)
+* **Kubernetes clusters** (Amazon EKS)
+* **CI/CD pipeline demonstrations** (AWS CodePipeline)
 
-dist/ – Compiled and production-ready static files
 
-HTML
 
-CSS
+---
 
-JavaScript
-
-Assets (images, fonts, etc.)
-
-These files are ready to deploy to:
-
-Web servers (Nginx / Apache)
-
-Cloud platforms (AWS S3, Azure Blob, GCP Storage)
-
-Containerized environments (Docker + Nginx)
-
-Kubernetes clusters
-
-CI/CD pipeline demonstrations
-
-🎯 Purpose of This Repository
-
+## 🎯 Purpose of This Repository
 This repository is designed for:
-
-DevOps beginners
-
-CI/CD practice
-
-Deployment pipeline testing
-
-Docker & Kubernetes deployment exercises
-
-Web server configuration practice
-
-Reverse proxy and load balancer setup
+* **DevOps beginners** practicing cloud deployments.
+* **CI/CD practice** using AWS Developer Tools.
+* **Docker & Kubernetes** deployment exercises.
+* **Load balancer and ingress** setup practice in EKS.
 
 The goal is to simulate real-world deployment scenarios using already built application files.
 
-❓ Why is there NO package.json?
+---
 
-You may notice that this repository does not include:
+## ❓ Why is there NO package.json?
+You may notice that this repository does not include a `package.json`, `node_modules`, or a `src/` folder.
 
-package.json
-
-node_modules
-
-Source code (src/)
-
-Build tools configuration
-
-✅ Reason:
-
-This repository only contains the final production build output (dist), not the development source code.
-
-In a typical project:
-
-Developers write source code.
-
-The project is built using tools like:
-
-Node.js
-
-Webpack
-
-Vite
-
-React (or other frameworks)
-
-A dist/ folder is generated.
-
-Only the production build is deployed to servers.
-
-This repository represents step 4 only.
+**✅ Reason:**
+This repository only contains the **final production build output**, not the development source code. In a typical professional workflow:
+1.  Developers write source code in a separate repo.
+2.  The project is built using Node.js/Vite.
+3.  A `dist/` folder is generated.
+4.  **Only the production build (this repo) is sent to the DevOps pipeline for deployment.**
 
 Since this is already the compiled output:
+* No NPM dependencies are required.
+* No local build process is required.
+* The deployment is faster and more secure.
 
-No dependencies are required
+---
 
-No build process is required
-
-No package.json is needed
+## 🚀 How This Project Was Deployed
+1.  **Code** was pulled from GitHub via **AWS CodePipeline**.
+2.  **AWS CodeBuild** used the `Dockerfile` to wrap the `dist/` folder into an Nginx image.
+3.  The image was stored in **Amazon ECR**.
+4.  The final app was deployed to **Amazon EKS** and made public via an **AWS Load Balancer**.
